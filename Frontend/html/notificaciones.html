@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notificaciones - Cusco Reporta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/notificaciones.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu" style="list-style: none;">
+        <li><a href="panel.html"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a></li>
+        <li><a href="perfil_usuario.html"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a></li>
+        <li><a href="registrar_Denuncia.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a></li>
+        <li><a href="lista_incidencias.html"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a></li>
+        <li><a href="MapaIncidiencias(Ciudadano).html"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a></li>
+        <li><a href="notificaciones.html" class="active"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a></li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>Notificaciones</h1>
+        <p>Mantente al tanto del progreso de tus reportes y alertas del sistema.</p>
+      </div>
+
+      <div class="notifications-list">
+        <div class="notif-card unread">
+          <div class="notif-icon status-proceso">
+            <i class="fa-solid fa-spinner"></i>
+          </div>
+          <div class="notif-content">
+            <div class="notif-header">
+              <span class="notif-tag tag-proceso">En Proceso</span>
+              <span class="notif-time">Hoy 10:30 AM</span>
+            </div>
+            <h3 class="notif-title">Tu reporte #ID-2024-001 ha sido actualizado</h3>
+            <p class="notif-desc">La denuncia por <strong>Obstrucción de vía</strong> en Av. El Sol ya cuenta con personal asignado para su inspección.</p>
+            <div class="notif-actions">
+              <button class="btn-read"><i class="fa-solid fa-check"></i> Marcar leída</button>
+              <a href="lista_incidencias.html" class="btn-detail">Ver detalle</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card">
+          <div class="notif-icon status-success">
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          <div class="notif-content">
+            <div class="notif-header">
+              <span class="notif-tag tag-success">Solucionado</span>
+              <span class="notif-time">Ayer 04:15 PM</span>
+            </div>
+            <h3 class="notif-title">Incidencia finalizada exitosamente</h3>
+            <p class="notif-desc">El bache reportado en <strong>Calle Mantas</strong> ha sido reparado. ¡Gracias por contribuir con la ciudad!</p>
+            <div class="notif-actions">
+              <span class="read-receipt">✓ Leída</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="notif-card unread">
+          <div class="notif-icon status-info">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="notif-content">
+            <div class="notif-header">
+              <span class="notif-tag tag-info">Sistema</span>
+              <span class="notif-time">12 Ene 2024</span>
+            </div>
+            <h3 class="notif-title">Mantenimiento de plataforma</h3>
+            <p class="notif-desc">La aplicación entrará en mantenimiento este sábado a las 22:00 hrs para mejorar el sistema de geolocalización.</p>
+            <div class="notif-actions">
+              <button class="btn-read"><i class="fa-solid fa-check"></i> Marcar leída</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/notificaciones.js"></script>
+</body>
+</html>

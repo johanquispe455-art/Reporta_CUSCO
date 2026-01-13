@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Usuario - Cusco Reporta</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/panel.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu" style="list-style: none;">
+        <li>
+          <a href="panel.html" class="active"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a>
+        </li>
+        <li>
+          <a href="perfil_usuario.html"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a>
+        </li>
+        
+        <li>
+          <a href="registrar_Denuncia.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a>
+        </li>
+        <li>
+          <a href="lista_incidencias.html"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a>
+        </li>
+        <li>
+          <a href="MapaIncidiencias(Ciudadano).html"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a>
+        </li>
+        <li>
+          <a href="notificaciones.html"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a>
+        </li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>¡Bienvenido, Jose Pérez!</h1>
+        <p>Resumen general de tus contribuciones a la seguridad vial.</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #e3f2fd; color: #1565c0;">
+            <i class="fa-solid fa-file-signature"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Reportes Totales</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #e8f5e9; color: #2e7d32;">
+            <i class="fa-solid fa-check-double"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-number">08</span>
+            <span class="stat-label">Resueltos</span>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon" style="background: #fff3e0; color: #ef6c00;">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="stat-details">
+            <span class="stat-number">04</span>
+            <span class="stat-label">En Proceso</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="recent-activity">
+        <div class="section-header">
+          <h2>Actividad Reciente</h2>
+          <a href="lista_incidencias.html" class="view-all">Ver todo</a>
+        </div>
+        
+        <div class="activity-list">
+          <div class="activity-item">
+            <div class="activity-status status-resuelto"></div>
+            <div class="activity-info">
+              <strong>R-8842 - Mal estacionamiento</strong>
+              <span>Av. El Sol - Hace 2 días</span>
+            </div>
+            <span class="activity-tag">Resuelto</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-status status-proceso"></div>
+            <div class="activity-info">
+              <strong>R-9012 - Semáforo inoperativo</strong>
+              <span>Plaza de Armas - Hace 5 horas</span>
+            </div>
+            <span class="activity-tag">En proceso</span>
+          </div>
+          <div class="activity-item">
+            <div class="activity-status status-pendiente"></div>
+            <div class="activity-info">
+              <strong>D-4412 - Denuncia por Obstrucción</strong>
+              <span>Calle Saphy - Ayer</span>
+            </div>
+            <span class="activity-tag">Recibido</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <h2>¿Qué deseas hacer ahora?</h2>
+        <div class="links-grid">
+          <a href="ReportarIncidencia.html" class="link-box">
+            <i class="fa-solid fa-camera"></i>
+            <span>Nuevo Reporte Anónimo</span>
+          </a>
+          <a href="MapaIncidiencias(Ciudadano).html" class="link-box">
+            <i class="fa-solid fa-map"></i>
+            <span>Explorar el Mapa</span>
+          </a>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/panel.js"></script>
+</body>
+</html>

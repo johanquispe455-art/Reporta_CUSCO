@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Usuarios - Cusco Reporta</title>
+    <link rel="stylesheet" href="../css/gestion_usuarios.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__logo">
+            <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+        </div>
+        <nav class="topbar__menu">
+            <a href="index.html">Inicio</a>
+            <a href="sobre_nosotros.html">Sobre nosotros</a>
+            <a href="ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar__user">
+                <div class="sidebar__avatar">
+                <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="sidebar__info">
+                <h3>Nombre</h3>
+                <p>Administrador</p>
+                </div>
+            </div>
+
+            <ul class="sidebar__menu">
+                <li>
+                <a href="panel_admin.html">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>Panel</span>
+                </a>
+                </li>
+                <li>
+                <a href="perfil_admin.html">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Ver perfil</span>
+                </a>
+                </li>
+                <li>
+                <a href="Estado_Reporte.html">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Reportes/Denuncias</span>
+                </a>
+                </li>
+                <li>
+                <a href="Mapa_Incidencias_Admin.html">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Mapa en vivo</span>
+                </a>
+                </li>
+                <li>
+                <a href="reporte_etadistico.html">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reporte estadístico</span>
+                </a>
+                </li>
+                <li>
+                <a href="gestion_usuarios.html" class="active">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Gestión de usuarios</span>
+                </a>
+                </li>
+                
+            </ul>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <section class="denuncia-form">
+                <div class="header-text">
+                    <h1>Gestión de Usuarios</h1>
+                    <p>Administra los accesos al sistema Cusco Reporta.</p>
+                </div>
+
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; gap: 10px; flex-wrap: wrap;">
+                    <button id="btnMostrarForm" style="background: #8b1a1a; color: white; border: none; padding: 12px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+                        <i class="fa-solid fa-user-plus"></i> Registrar Usuario Nuevo
+                    </button>
+
+                    <div style="position: relative; flex: 1; max-width: 300px;">
+                        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #888;"></i>
+                        <input type="text" id="buscadorUsuario" placeholder="Buscar por DNI o Nombre..." style="width: 100%; padding: 10px 10px 10px 35px; border: 1px solid #ccc; border-radius: 5px;">
+                    </div>
+                </div>
+
+                <div id="containerFormulario" class="form-container" style="display: none; background: white; padding: 20px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <h2 style="color: #8b1a1a; margin: 0;">Datos del Nuevo Usuario</h2>
+                        <button id="btnCerrarForm" style="background: none; border: none; font-size: 20px; cursor: pointer; color: #555;">&times;</button>
+                    </div>
+                    
+                    <form id="formCrearUsuario" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <div>
+                            <label>DNI</label>
+                            <input type="text" id="dni" placeholder="Ej. 70654321" maxlength="8" pattern="\d{8}" title="Debe tener 8 dígitos numéricos" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Nombre Completo</label>
+                            <input type="text" id="nombre" placeholder="Ej. Juan Pérez" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Correo Electrónico</label>
+                            <input type="email" id="correo" placeholder="correo@ejemplo.com" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div>
+                            <label>Rol</label>
+                            <select id="rol" style="width: 100%; padding: 8px; margin-top: 5px;">
+                                <option value="Usuario">Ciudadano</option>
+                                <option value="Moderador">Administrador</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label>Contraseña</label>
+                            <input type="password" id="password" placeholder="********" required style="width: 100%; padding: 8px; margin-top: 5px;">
+                        </div>
+                        <div style="grid-column: 1 / -1;">
+                            <button type="submit" style="background: #8b1a1a; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer; font-weight: bold;">
+                                Guardar Registro
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <table id="tablaUsuarios">
+                    <thead>
+                        <tr>
+                            <th>DNI</th>
+                            <th>Nombre</th>
+                            <th>Correo</th>
+                            <th>Rol</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyUsuarios">
+                        </tbody>
+                </table>
+            </section>
+        </main>
+    </div>
+
+    <script src="../js/gestion_usuarios.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>

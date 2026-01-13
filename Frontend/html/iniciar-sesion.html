@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Iniciar Sesión - Cusco Reporta</title>
+  
+  <link rel="stylesheet" href="../css/iniciar-sesion.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="navbar__left">
+      <img src="../assents/images/CuscoReporta.png" alt="Logo Cusco Reporta" class="navbar__logo">
+    </div>
+
+    <nav class="navbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="registrar_tu_denuncia.html">Registra tu denuncia</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="iniciar-sesion.html">Iniciar Sesión</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="denuncia">
+      <h1 class="login-title">INICIO DE SESIÓN</h1>
+
+      <div class="login-form">
+        <form id="loginForm">
+          <div class="form-group">
+            <label for="username" class="form-label">Nombre de Usuario o Email</label>
+            <input type="text" id="username" name="username" class="form-input" placeholder="usuario@ejemplo.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" id="password" name="password" class="form-input" placeholder="••••••••" required>
+          </div>
+          
+          <button type="submit" class="submit-btn">Iniciar Sesión</button>
+        </form>
+      </div>
+
+      <div class="options-container">
+        <p class="intro-text">¿No tienes una cuenta?</p>
+        <div class="auth-buttons">
+          <a href="registro_usuario.html" class="auth-btn auth-btn-register">Registrarse</a>
+        </div>
+      </div>
+
+      <p class="confia">¡CONFÍA EN NOSOTROS!</p>
+      
+      <div class="footer-links" style="margin-top: 20px;">
+        <a href="index.html" class="back-link">← Volver al Inicio</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="customAlert" class="modal-overlay">
+    <div class="modal-content">
+      <div id="modalIcon" style="font-size: 50px; margin-bottom: 10px;"></div>
+      <h2 id="modalTitle"></h2>
+      <p id="modalMessage"></p>
+      <button onclick="closeModal()" class="modal-btn">Aceptar</button>
+    </div>
+  </div>
+
+  <script src="../js/iniciar-sesion.js"></script>
+</body>
+</html>

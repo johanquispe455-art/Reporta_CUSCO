@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Cusco Reporta – Centro de Monitoreo Admin</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/Mapa_Incidencias_Admin.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__logo">
+            <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+        </div>
+        <nav class="topbar__menu">
+            <a href="index.html">Inicio</a>
+            <a href="sobre_nosotros.html">Sobre nosotros</a>
+            <a href="ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+        <div class="sidebar__user">
+            <div class="sidebar__avatar">
+            <i class="fa-solid fa-user-shield"></i>
+            </div>
+            <div class="sidebar__info">
+            <h3>Nombre</h3>
+            <p>Administrador</p>
+            </div>
+        </div>
+
+        <ul class="sidebar__menu">
+            <li>
+            <a href="panel_admin.html">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span>Panel</span>
+            </a>
+            </li>
+            <li>
+            <a href="perfil_admin.html">
+                <i class="fa-solid fa-id-card"></i>
+                <span>Ver perfil</span>
+            </a>
+            </li>
+            <li>
+            <a href="Estado_Reporte.html">
+                <i class="fa-solid fa-list-check"></i>
+                <span>Reportes/Denuncias</span>
+            </a>
+            </li>
+            <li>
+            <a href="Mapa_Incidencias_Admin.html" class="active">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Mapa en vivo</span>
+            </a>
+            </li>
+            <li>
+            <a href="reporte_etadistico.html">
+                <i class="fa-solid fa-chart-column"></i>
+                <span>Reporte estadístico</span>
+            </a>
+            </li>
+            <li>
+            <a href="gestion_usuarios.html">
+                <i class="fa-solid fa-users-gear"></i>
+                <span>Gestión de usuarios</span>
+            </a>
+            </li>
+            
+        </ul>
+
+        <button class="logout-btn" id="logoutBtn">
+            <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+        </button>
+        </aside>
+
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Monitoreo de Incidencias en Tiempo Real</h1>
+                <div class="stats-mini">
+                    <div class="stat-item stat-recibido">
+                        <span id="c-reci">0</span> 
+                        <small>Recibidos</small>
+                    </div>
+                    <div class="stat-item stat-proceso">
+                        <span id="c-proc">0</span> 
+                        <small>En Proceso</small>
+                    </div>
+                    <div class="stat-item stat-solucionado">
+                        <span id="c-solu">0</span> 
+                        <small>Resueltos</small>
+                    </div>
+                </div>
+            </header>
+
+            <div class="layout">
+                <section class="card map-container">
+                    <div id="map"></div>
+                </section>
+
+                <aside class="control-panel">
+                    <div class="card">
+                        <h3><i class="fa-solid fa-filter"></i> Filtros de Mapa</h3>
+                        <div class="filters">
+                            <label>Estado del Reporte</label>
+                            <select id="fEstado">
+                                <option value="TODOS">Todas las incidencias</option>
+                                <option value="Recibido">Pendientes (Recibido)</option>
+                                <option value="En proceso">En atención (Proceso)</option>
+                                <option value="Solucionado">Finalizados (Solucionado)</option>
+                            </select>
+                            <button id="btnAplicar" class="btn">Actualizar Vista</button>
+                        </div>
+                    </div>
+
+                    <div class="card detail-card">
+                        <h3><i class="fa-solid fa-circle-info"></i> Detalle de Incidencia</h3>
+                        <div id="detalle" class="detalle-content">
+                            <div class="empty-state">Seleccione un marcador en el mapa para ver los detalles.</div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/Mapa_Incidencias_Admin.js"></script>
+</body>
+</html>

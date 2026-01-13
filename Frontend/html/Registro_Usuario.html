@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cusco Reporta – Registro de Usuario</title>
+  <link rel="stylesheet" href="../css/Registro_Usuario.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logos">
+      <img src="../assents/images/MTC.png" alt="Ministerio de Transportes y Comunicaciones">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta">
+    </div>
+    <nav class="nav">
+      <a href="index.html">Inicio</a>
+      <a href="panel.html">Registra tu denuncia</a>
+      <a href="#">Sobre nosotros</a>
+      <a href="iniciar-sesion.html">Iniciar Sesión</a>
+      <a href="#">Ayuda</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="title-area">
+        <img class="brand-mini" src="../assents/images/CuscoReporta.png" alt="Cusco Reporta">
+        <h1>Registro de Usuario</h1>
+        <p class="subtitle">Ingresa tu DNI para validar tus datos automáticamente.</p>
+      </div>
+
+      <form id="formRegistro" novalidate>
+        <div class="grid">
+          <div style="position: relative;">
+            <label for="dni">DNI *</label>
+            <input id="dni" name="dni" type="text" inputmode="numeric" maxlength="8" placeholder="8 dígitos" style="width: 90%" required>
+            <i id="loading-dni" class="fas fa-circle-notch fa-spin" style="display:none; position: absolute; right: 15%; top: 38px; color: #8b0000;"></i>
+            <div id="e-dni" class="err">DNI inválido o no encontrado.</div>
+          </div>
+
+          <div>
+            <label for="nombre">Nombre completo *</label>
+            <input id="nombre" name="nombre" type="text" placeholder="Se completará con el DNI" style="width: 90%" required readonly>
+            <div id="e-nombre" class="err">Ingrese su nombre completo.</div>
+          </div>
+
+          <div>
+            <label for="correo">Correo electrónico *</label>
+            <input id="correo" name="correo" type="email" placeholder="usuario@correo.com" style="width: 90%" required>
+            <div id="e-correo" class="err">Correo electrónico inválido.</div>
+          </div>
+
+          <div>
+            <label for="telefono">Teléfono *</label>
+            <input id="telefono" name="telefono" type="text" inputmode="numeric" maxlength="9" placeholder="9 dígitos" style="width: 90%" required>
+            <div id="e-telefono" class="err">Teléfono inválido (9 dígitos numéricos).</div>
+          </div>
+
+          <div class="span-2">
+            <label for="direccion">Dirección *</label>
+            <input id="direccion" name="direccion" type="text" placeholder="Av. Los Incas 123, Cusco" style="width: 95%" required>
+            <div id="e-direccion" class="err">Ingrese su dirección.</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="submit" class="btn">Registrarme</button>
+          <a href="iniciar-sesion.html" class="btn secondary">Ya tengo cuenta</a>
+        </div>
+
+        <div id="ok" class="success">✅ Registro exitoso. ¡Ahora puedes reportar incidencias!</div>
+      </form>
+
+      <p class="disclaimer">
+        Al registrarte aceptas los términos y autorizas el uso de tus datos para fines de atención de incidencias de tránsito.
+      </p>
+    </section>
+  </main>
+
+  <script src="../js/Registro_Usuario.js"></script>
+</body>
+</html>

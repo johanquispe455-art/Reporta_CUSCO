@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administrador - Cusco Reporta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/panel_admin.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Nombre</h3>
+          <p>Administrador</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu">
+        <li>
+          <a href="panel_admin.html" class="active">
+            <i class="fa-solid fa-house-chimney"></i>
+            <span>Panel</span>
+          </a>
+        </li>
+        <li>
+          <a href="perfil_admin.html">
+            <i class="fa-solid fa-id-card"></i>
+            <span>Ver perfil</span>
+          </a>
+        </li>
+        <li>
+          <a href="Estado_Reporte.html">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Reportes/Denuncias</span>
+          </a>
+        </li>
+        <li>
+          <a href="Mapa_Incidencias_Admin.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Mapa en vivo</span>
+          </a>
+        </li>
+        <li>
+          <a href="reporte_etadistico.html">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Reporte estadístico</span>
+          </a>
+        </li>
+        <li>
+          <a href="gestion_usuarios.html">
+            <i class="fa-solid fa-users-gear"></i>
+            <span>Gestión de usuarios</span>
+          </a>
+        </li>
+        
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>¡Bienvenido, Administrador!</h1>
+        <p>Resumen general del estado de Cusco Reporta al día de hoy.</p>
+      </div>
+
+      <section class="stats-grid">
+        
+        <div class="stat-card total">
+            <div class="stat-card__content">
+                <div class="stat-card__data">
+                    <h4>Incidencias Totales</h4>
+                    <h2>1,248</h2>
+                </div>
+                <i class="fa-solid fa-file-invoice"></i>
+            </div>
+            <p class="stat-card__trend positive">
+                <i class="fa-solid fa-arrow-up"></i> +12% desde el último mes
+            </p>
+        </div>
+
+        <div class="stat-card pending">
+            <div class="stat-card__content">
+                <div class="stat-card__data">
+                    <h4>Por Atender</h4>
+                    <h2>42</h2>
+                </div>
+                <i class="fa-solid fa-clock-rotate-left"></i>
+            </div>
+            <p class="stat-card__trend warning">Requieren atención inmediata</p>
+        </div>
+
+        <div class="stat-card users">
+            <div class="stat-card__content">
+                <div class="stat-card__data">
+                    <h4>Ciudadanos</h4>
+                    <h2>856</h2>
+                </div>
+                <i class="fa-solid fa-users"></i>
+            </div>
+            <p class="stat-card__trend">Registrados en la plataforma</p>
+        </div>
+
+      </section>
+
+      <section class="quick-actions">
+        <h3>Acciones Rápidas</h3>
+        <div class="actions-container">
+            <a href="gestion_usuarios.html" class="btn-action primary">
+                <i class="fa-solid fa-user-plus"></i> Nuevo Usuario
+            </a>
+            <a href="Estado_Reporte.html" class="btn-action outline">
+                <i class="fa-solid fa-magnifying-glass"></i> Revisar Reportes
+            </a>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="../js/panel_admin.js"></script>
+</body>
+</html>

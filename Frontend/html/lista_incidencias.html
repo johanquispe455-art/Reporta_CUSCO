@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estado de Denuncia - Cusco Reporta</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/panel.css" />
+  <link rel="stylesheet" href="../css/lista_incidencias.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu" style="list-style: none;">
+        <li><a href="panel.html"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a></li>
+        <li><a href="perfil_usuario.html"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a></li>
+        <li><a href="registrar_Denuncia.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a></li>
+        <li><a href="lista_incidencias.html" class="active"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a></li>
+        <li><a href="MapaIncidiencias(Ciudadano).html"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a></li>
+        <li><a href="notificaciones.html"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a></li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>Estado de denuncias</h1>
+        <p>Gestiona y visualiza el avance de tus incidencias reportadas.</p>
+      </div>
+
+      <div class="reports-container">
+        <div class="reports-header">
+          <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="buscar" placeholder="Buscar por ID o Dirección...">
+          </div>
+          <div class="date-filters">
+            <div class="filter-group">
+              <label>Estado:</label>
+              <select id="fEstado">
+                <option value="TODOS">Todos</option>
+                <option value="ENVIADO">Enviado</option>
+                <option value="PROCESO">En Proceso</option>
+                <option value="SOLUCIONADO">Solucionado</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="reports-table-wrapper">
+          <table id="tabla-incidencias">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Fecha</th>
+                <th>Clase</th>
+                <th>Dirección</th>
+                <th>Estado</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <div id="modalDetalle" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-titulo">Detalles de la denuncia</h2>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="detail-grid">
+            <div class="detail-info">
+              <div class="info-group">
+                <p><strong>ID:</strong> <span id="det-id"></span></p>
+                <p><strong>Fecha:</strong> <span id="det-fecha"></span></p>
+                <p><strong>Clase:</strong> <span id="det-clase"></span></p>
+                <p><strong>Estado:</strong> <span id="det-estado" class="status-badge"></span></p>
+              </div>
+              <hr>
+              <div class="info-group">
+                <p><strong>Dirección:</strong> <span id="det-dir"></span></p>
+                <p id="wrapper-placa" style="display:none;"><strong>Placa:</strong> <span id="det-placa"></span></p>
+                <p id="wrapper-denunciado" style="display:none;"><strong>Denunciado:</strong> <span id="det-denunciado"></span></p>
+              </div>
+              <p><strong>Descripción:</strong></p>
+              <p id="det-desc" class="desc-box"></p>
+            </div>
+
+            <div class="detail-visual">
+              <div id="map-detalle" class="map-container"></div>
+              <div class="detail-photo-container">
+                <label><i class="fa-solid fa-image"></i> Evidencia Adjunta:</label>
+                <img id="det-foto" src="" alt="Evidencia">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/lista_incidencias.js"></script>
+</body>
+</html>

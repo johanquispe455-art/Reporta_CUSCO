@@ -1,0 +1,112 @@
+/* RESET Y BASE */
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+body { background-color: #f0f2f5; display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+
+/* TOPBAR */
+.topbar { background-color: #ffffff; height: 70px; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); z-index: 100; }
+.topbar__logo img { height: 40px; }
+.topbar__menu { display: flex; gap: 25px; }
+.topbar__menu a { text-decoration: none; color: #555; font-weight: 600; font-size: 14px; transition: 0.3s; }
+.topbar__menu a:hover { color: #8b1a1a; }
+
+.container { display: flex; flex: 1; overflow: hidden; }
+
+/* SIDEBAR CORREGIDO */
+.sidebar { width: 280px; background-color: #8b1a1a; padding: 30px 20px; display: flex; flex-direction: column; }
+.sidebar__user { display: flex; align-items: center; gap: 15px; padding-bottom: 25px; border-bottom: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 20px; }
+.sidebar__avatar { width: 50px; height: 50px; background-color: rgba(255, 255, 255, 0.2); color: white; border-radius: 12px; display: flex; justify-content: center; align-items: center; font-size: 20px; }
+.sidebar__info h3 { font-size: 16px; color: #ffffff; font-weight: 700; }
+.sidebar__info p { font-size: 12px; color: rgba(255, 255, 255, 0.8); }
+
+.sidebar__menu { list-style: none; flex-grow: 1; }
+.sidebar__menu li { margin-bottom: 8px; }
+.sidebar__menu a { text-decoration: none; color: rgba(255, 255, 255, 0.9); font-weight: 500; display: flex; align-items: center; padding: 12px 15px; border-radius: 10px; transition: all 0.3s; }
+.sidebar__menu a i { color: #ffffff; font-size: 18px; width: 30px; display: flex; justify-content: center; margin-right: 12px; }
+.sidebar__menu a:hover { background-color: rgba(255, 255, 255, 0.15); }
+.sidebar__menu a.active { background-color: #ffffff; color: #8b1a1a; }
+.sidebar__menu a.active i { color: #8b1a1a; }
+
+.logout-btn { background-color: rgba(0, 0, 0, 0.2); color: #ffffff; border: 1px solid rgba(255, 255, 255, 0.3); padding: 12px; border-radius: 10px; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: auto; }
+.logout-btn:hover { background: #ffffff; color: #8b1a1a; }
+
+/* MAIN CONTENT */
+.main-content { flex: 1; padding: 40px; overflow-y: auto; background-image: radial-gradient(#e0e0e0 0.5px, transparent 0.5px); background-size: 20px 20px; }
+
+.form-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 1100px; margin: 0 auto; }
+.form-header-main { border-bottom: 2px solid #f5f5f5; padding-bottom: 20px; margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; }
+.form-header-main h1 { font-size: 1.8rem; color: #222; font-weight: 800; }
+.user-badge-mini { background: #e8f5e9; color: #2e7d32; padding: 8px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+
+.denuncia-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.section-subtitle { font-size: 1rem; color: #8b1a1a; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; text-transform: uppercase; font-weight: 700; }
+
+.input-group { margin-bottom: 20px; display: flex; flex-direction: column; gap: 8px; }
+.input-group label { font-size: 0.8rem; font-weight: 700; color: #666; }
+.input-group input, .input-group select, .input-group textarea { padding: 12px; border: 2px solid #eee; border-radius: 10px; transition: 0.3s; outline: none; background: #fafafa; }
+.input-group input:focus { border-color: #8b1a1a; background: #fff; }
+
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+
+/* PLACA */
+.placa-input { font-family: 'Courier New', monospace; text-transform: uppercase; font-size: 1.4rem !important; text-align: center; color: #1565c0 !important; background: #e3f2fd !important; letter-spacing: 4px; font-weight: 800; border: 2px dashed #1565c0 !important; }
+
+/* FILE UPLOAD */
+.file-upload { position: relative; border: 2px dashed #ddd; border-radius: 12px; padding: 25px; text-align: center; transition: 0.3s; background: #fcfcfc; }
+.file-upload:hover { border-color: #8b1a1a; background: #fff8f8; }
+.file-upload input { position: absolute; opacity: 0; width: 100%; height: 100%; top: 0; left: 0; cursor: pointer; }
+.upload-design i { font-size: 1.8rem; color: #8b1a1a; margin-bottom: 8px; }
+.upload-design p { font-size: 0.85rem; font-weight: 600; color: #444; }
+.upload-design span { font-size: 0.7rem; color: #999; }
+
+/* MAPA */
+#mapContainer { height: 250px; border-radius: 15px; border: 1px solid #ddd; z-index: 1; }
+.map-hint { font-size: 0.75rem; color: #888; margin-top: 8px; font-style: italic; }
+
+.btn-modal-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+.btn-modal { padding: 12px; border: 1px solid #ddd; border-radius: 10px; background: white; cursor: pointer; font-weight: 600; font-size: 0.85rem; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-modal:hover { background: #8b1a1a; color: white; border-color: #8b1a1a; }
+
+.btn-enviar { width: 100%; background: #8b1a1a; color: white; border: none; padding: 18px; border-radius: 12px; font-weight: 800; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 15px; box-shadow: 0 5px 15px rgba(139, 26, 26, 0.2); transition: 0.3s; }
+.btn-enviar:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(139, 26, 26, 0.4); }
+
+/* MODAL EXITO (NUEVO) */
+.modal-exito { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(8px); }
+.modal-exito-content { background: white; width: 400px; padding: 40px; border-radius: 25px; margin: 100px auto; text-align: center; animation: slideDown 0.4s ease; }
+.success-icon { font-size: 4rem; color: #4caf50; margin-bottom: 15px; }
+.id-final { background: #f0f0f0; padding: 15px; border-radius: 10px; font-size: 1.5rem; font-weight: 800; color: #8b1a1a; margin: 20px 0; border: 2px solid #ddd; }
+.btn-aceptar { background: #222; color: white; border: none; padding: 12px 40px; border-radius: 10px; cursor: pointer; font-weight: 600; margin-top: 10px; }
+.btn-aceptar:hover { background: #000; }
+
+@keyframes slideDown { from { transform: translateY(-50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* OTROS MODALES */
+.modal { display: none; position: fixed; z-index: 1500; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
+.modal-content { background: white; width: 450px; margin: 100px auto; padding: 30px; border-radius: 20px; position: relative; }
+.close-modal { position: absolute; right: 20px; top: 15px; font-size: 24px; cursor: pointer; color: #999; }
+/* ... (Todo lo anterior se mantiene igual) ... */
+
+/* BOTÓN ESPECÍFICO PARA GUARDAR EN MODAL */
+.btn-guardar-modal {
+    width: 100%;
+    background: #222;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.btn-guardar-modal:hover {
+    background: #8b1a1a;
+}
+
+/* Ajuste sutil al input row de la derecha */
+.input-row .btn-modal {
+    height: 55px; /* Para que alinee con el input de placa */
+    margin-top: 0;
+}
+
+/* ... (Resto del CSS del modal de éxito y general se mantiene) ... */

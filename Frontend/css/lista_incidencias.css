@@ -1,0 +1,81 @@
+/* ... (Se mantiene lo anterior y se añade/modifica esto) ... */
+
+.main-content {
+    flex: 1; padding: 40px; overflow-y: auto;
+    background-image: radial-gradient(#d1d1d1 0.6px, transparent 0.6px); background-size: 25px 25px;
+}
+
+.reports-container {
+    background: white; border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08); overflow: hidden;
+}
+
+.reports-header {
+    padding: 20px; border-bottom: 1px solid #eee;
+    display: flex; justify-content: space-between; align-items: center; gap: 20px;
+}
+
+.search-box { position: relative; flex: 1; }
+.search-box i { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: #888; }
+.search-box input { width: 100%; padding: 10px 10px 10px 40px; border: 1px solid #ddd; border-radius: 8px; font-size: 14px; }
+
+.date-filters select { padding: 10px; border-radius: 8px; border: 1px solid #ddd; background: #f9f9f9; }
+
+/* TABLA */
+.reports-table-wrapper { padding: 10px; overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+thead th { background: #f8f9fa; padding: 15px; text-align: left; font-size: 13px; color: #666; border-bottom: 2px solid #eee; }
+tbody td { padding: 15px; border-bottom: 1px solid #f1f1f1; font-size: 14px; color: #333; }
+
+.btn-ver {
+    background: #8b1a1a; color: white; border: none; padding: 6px 12px;
+    border-radius: 6px; cursor: pointer; font-size: 12px; transition: 0.3s;
+}
+.btn-ver:hover { background: #5e1111; }
+
+/* BADGES */
+.status-badge { padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; }
+.status-reporte { background: #ffebee; color: #c62828; }
+.status-proceso { background: #fff3e0; color: #ef6c00; }
+.status-solucionado { background: #e8f5e9; color: #2e7d32; }
+
+/* MODAL MEJORADO */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6); display: none; justify-content: center; align-items: center; z-index: 1000;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+    background: white; width: 95%; max-width: 850px; border-radius: 15px; overflow: hidden;
+    animation: slideUp 0.3s ease; max-height: 90vh; overflow-y: auto;
+}
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.modal-header { background: #8b1a1a; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+.close-modal { background: none; border: none; color: white; font-size: 28px; cursor: pointer; }
+
+.modal-body { padding: 25px; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; }
+
+.info-group p { margin-bottom: 12px; font-size: 15px; }
+hr { border: 0; border-top: 1px solid #eee; margin: 15px 0; }
+
+.desc-box { 
+    background: #f8f9fa; padding: 15px; border-radius: 10px; border-left: 4px solid #8b1a1a;
+    margin-top: 10px; font-size: 14px; line-height: 1.5; color: #444; 
+}
+
+/* Contenedores Visuales */
+.map-container { height: 200px; border-radius: 12px; border: 1px solid #ddd; margin-bottom: 20px; }
+.detail-photo-container { display: flex; flex-direction: column; gap: 8px; }
+.detail-photo-container label { font-weight: 600; font-size: 14px; color: #666; }
+.detail-photo-container img { 
+    width: 100%; max-height: 250px; object-fit: cover; 
+    border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+}
+
+@media (max-width: 768px) { 
+    .detail-grid { grid-template-columns: 1fr; }
+    .modal-content { width: 90%; }
+}

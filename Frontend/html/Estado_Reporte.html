@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cusco Reporta – Gestión de Incidencias</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="../css/Estado_Reporte.css" />
+</head>
+<body>
+
+    <header class="topbar">
+        <div class="topbar__logo">
+            <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+        </div>
+        <nav class="topbar__menu">
+            <a href="index.html">Inicio</a>
+            <a href="sobre_nosotros.html">Sobre nosotros</a>
+            <a href="ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar__user">
+                <div class="sidebar__avatar">
+                <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="sidebar__info">
+                <h3>Nombre</h3>
+                <p>Administrador</p>
+                </div>
+            </div>
+
+            <ul class="sidebar__menu">
+                <li>
+                <a href="panel_admin.html">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>Panel</span>
+                </a>
+                </li>
+                <li>
+                <a href="perfil_admin.html">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Ver perfil</span>
+                </a>
+                </li>
+                <li>
+                <a href="Estado_Reporte.html" class="active">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Reportes/Denuncias</span>
+                </a>
+                </li>
+                <li>
+                <a href="Mapa_Incidencias_Admin.html">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Mapa en vivo</span>
+                </a>
+                </li>
+                <li>
+                <a href="reporte_etadistico.html">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reporte estadístico</span>
+                </a>
+                </li>
+                <li>
+                <a href="gestion_usuarios.html">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Gestión de usuarios</span>
+                </a>
+                </li>
+                
+            </ul>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <div class="header-section">
+                <div>
+                    <h1>Gestión de Incidencias</h1>
+                    <p>Monitoreo en tiempo real de Denuncias y Reportes ciudadanos.</p>
+                </div>
+                <div class="kpi-mini">
+                    <span><i class="fa-solid fa-bell"></i> Pendientes: <b>4</b></span>
+                </div>
+            </div>
+
+            <div class="layout-grid">
+                <section class="card table-section">
+                    <div class="filters">
+                        <div class="f-group">
+                            <label>Origen</label>
+                            <select id="fClase">
+                                <option value="TODOS">Todos</option>
+                                <option value="D">Denuncias Formales</option>
+                                <option value="R">Reportes Anónimos</option>
+                            </select>
+                        </div>
+                        <div class="f-group">
+                            <label>Estado</label>
+                            <select id="fEstado">
+                                <option value="TODOS">Todos</option>
+                                <option value="Recibido">Recibido</option>
+                                <option value="En proceso">En proceso</option>
+                                <option value="Solucionado">Solucionado</option>
+                            </select>
+                        </div>
+                        <div class="search-box-container">
+                            <label>Búsqueda Rápida</label>
+                            <div class="input-icon">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                                <input id="buscar" placeholder="ID, Ciudadano, Placa o Dirección...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table id="tabla">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Fecha</th>
+                                    <th>Origen / Usuario</th> 
+                                    <th>Incidencia / Placa</th>
+                                    <th>Estado</th>
+                                    <th>Prioridad</th>
+                                    <th style="text-align: center;">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <aside class="card detail-section" id="detailCard">
+                    <div class="detail-header">
+                        <h3><i class="fa-solid fa-circle-info"></i> Vista Previa</h3>
+                        <span class="detail-hint">Selecciona un item</span>
+                    </div>
+                    
+                    <div id="no-selection" class="empty-state">
+                        <img src="https://cdn-icons-png.flaticon.com/512/7486/7486744.png" alt="Select" width="60" style="opacity: 0.5; margin-bottom: 10px;">
+                        <p>Haga clic en "Ver Detalles" en la tabla para auditar.</p>
+                    </div>
+                    
+                    <div class="detail-content" id="detailBody" style="display:none;">
+                        <div class="preview-header">
+                            <span id="d-id-badge" class="id-badge"></span>
+                            <span id="d-fecha" class="date-badge"></span>
+                        </div>
+
+                        <div class="preview-map" id="map-preview"></div>
+
+                        <div class="preview-info">
+                            <h4 id="d-tipo-title">Tipo de Incidencia</h4>
+                            <p id="d-desc-preview" class="desc-text"></p>
+                        </div>
+
+                        <div class="preview-actions">
+                            <button id="btnFullScreen" class="btn-full-screen">
+                                <i class="fa-solid fa-up-right-and-down-left-from-center"></i> Abrir Auditoría Completa
+                            </button>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </main>
+    </div>
+
+    <div id="modalFull" class="modal-overlay">
+        <div class="modal-content">
+            <header class="modal-header">
+                <div class="modal-title">
+                    <h2 id="m-titulo">Auditoría de Incidencia</h2>
+                    <span id="m-id" class="id-badge-large"></span>
+                </div>
+                <button id="closeModal" class="btn-close"><i class="fa-solid fa-xmark"></i></button>
+            </header>
+
+            <div class="modal-body">
+                <div class="modal-col-left">
+                    <div class="info-group">
+                        <label>Estado Actual</label>
+                        <select id="m-estado" class="input-std">
+                            <option value="Recibido">Recibido</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Solucionado">Solucionado</option>
+                        </select>
+                    </div>
+
+                    <div class="info-group">
+                        <label>Prioridad</label>
+                        <select id="m-prioridad" class="input-std">
+                            <option value="Alta">Alta</option>
+                            <option value="Media">Media</option>
+                            <option value="Baja">Baja</option>
+                        </select>
+                        <small id="m-prio-msg" class="helper-text">Calculado automáticamente por sistema.</small>
+                    </div>
+
+                    <hr class="divider">
+
+                    <div class="data-list">
+                        <div class="data-item">
+                            <span class="lbl">Denunciante:</span>
+                            <span class="val" id="m-denunciante"></span>
+                        </div>
+                        <div class="data-item" id="m-dni-container">
+                            <span class="lbl">DNI / Contacto:</span> <span class="val">Validado por RENIEC</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="lbl">Placa Vehicular:</span>
+                            <span class="val placa-style" id="m-placa"></span>
+                        </div>
+                        <div class="data-item">
+                            <span class="lbl">Dirección:</span>
+                            <span class="val" id="m-direccion"></span>
+                        </div>
+                         <div class="data-item">
+                            <span class="lbl">Descripción:</span>
+                            <p class="val desc-full" id="m-descripcion"></p>
+                        </div>
+                    </div>
+
+                    <div id="m-response-section" style="margin-top: 25px; padding-top: 20px; border-top: 2px dashed #eee;">
+                        <h3 style="font-size: 14px; color: var(--primary); margin-bottom: 10px;"><i class="fa-solid fa-paper-plane"></i> Notificar al Usuario</h3>
+                        <div class="info-group">
+                            <label>Acciones tomadas / Respuesta</label>
+                            <textarea id="m-respuesta-texto" class="input-std" rows="3" placeholder="Escriba aquí los detalles de la atención para el ciudadano..."></textarea>
+                        </div>
+                        <button id="btnEnviarRespuesta" class="btn-full-screen" style="background: #1565c0; font-size: 13px; padding: 10px;">
+                            <i class="fa-solid fa-envelope"></i> Enviar Notificación
+                        </button>
+                    </div>
+
+                    <div class="modal-footer-actions">
+                        <button id="btnGuardarModal" class="btn-save-modal">
+                            <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+                        </button>
+                    </div>
+                </div>
+
+                <div class="modal-col-right">
+                    <h3>Evidencia Adjunta</h3>
+                    <div class="evidence-container">
+                        <div class="evidence-media">
+                            <img src="https://via.placeholder.com/600x400?text=Evidencia+Fotogr%C3%A1fica" alt="Evidencia" id="m-evidencia-img">
+                        </div>
+                        <div class="evidence-meta">
+                            <span><i class="fa-solid fa-camera"></i> Foto 1</span>
+                            <span><i class="fa-solid fa-clock"></i> 10:42 AM</span>
+                        </div>
+                    </div>
+                    
+                    <div class="map-full-container">
+                         <h3>Geolocalización</h3>
+                         <div id="map-full"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="../js/Estado_Reporte.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa de Incidencias - Cusco Reporta</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/MapaIncidencias_Ciudadano.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu" style="list-style: none;">
+        <li><a href="panel.html"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a></li>
+        <li><a href="perfil_usuario.html"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a></li>
+        <li><a href="registrar_Denuncia.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a></li>
+        <li><a href="lista_incidencias.html"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a></li>
+        <li><a href="MapaIncidiencias(Ciudadano).html" class="active"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a></li>
+        <li><a href="notificaciones.html"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a></li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="header-map">
+        <div>
+          <h1>Mapa de Incidencias</h1>
+          <p>Explora el estado de la ciudad en tiempo real.</p>
+        </div>
+        <div class="filtro-container">
+          <select id="tipo">
+            <option value="todos">Todos los estados</option>
+            <option value="RECIBIDO">Recibidos</option>
+            <option value="PROCESO">En Proceso</option>
+            <option value="SOLUCIONADO">Solucionados</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="stats-container">
+        <div class="stat-card total">
+          <div class="stat-value" id="total-count">0</div>
+          <div class="stat-label">Totales</div>
+        </div>
+        <div class="stat-card recibido">
+          <div class="stat-value" id="recibido-count">0</div>
+          <div class="stat-label">Recibidos</div>
+        </div>
+        <div class="stat-card proceso">
+          <div class="stat-value" id="proceso-count">0</div>
+          <div class="stat-label">En Proceso</div>
+        </div>
+        <div class="stat-card solucionado">
+          <div class="stat-value" id="solucionado-count">0</div>
+          <div class="stat-label">Solucionados</div>
+        </div>
+      </div>
+
+      <div class="map-wrapper">
+        <div id="map"></div>
+        <div class="map-legend-overlay">
+          <div class="leg-item"><span class="dot red"></span> Recibido</div>
+          <div class="leg-item"><span class="dot orange"></span> En Proceso</div>
+          <div class="leg-item"><span class="dot green"></span> Solucionado</div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/MapaIncidencias_Ciudadano.js"></script>
+</body>
+</html>

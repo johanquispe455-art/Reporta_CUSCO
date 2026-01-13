@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Análisis Estadístico - Cusco Reporta</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/reporte_etadistico.css" />
+</head>
+<body>
+    <header class="topbar">
+        <div class="topbar__logo">
+            <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+        </div>
+        <nav class="topbar__menu">
+            <a href="index.html">Inicio</a>
+            <a href="sobre_nosotros.html">Sobre nosotros</a>
+            <a href="ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <div class="sidebar__user">
+                <div class="sidebar__avatar">
+                <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="sidebar__info">
+                <h3>Nombre</h3>
+                <p>Administrador</p>
+                </div>
+            </div>
+
+            <ul class="sidebar__menu">
+                <li>
+                <a href="panel_admin.html">
+                    <i class="fa-solid fa-house-chimney"></i>
+                    <span>Panel</span>
+                </a>
+                </li>
+                <li>
+                <a href="perfil_admin.html">
+                    <i class="fa-solid fa-id-card"></i>
+                    <span>Ver perfil</span>
+                </a>
+                </li>
+                <li>
+                <a href="Estado_Reporte.html">
+                    <i class="fa-solid fa-list-check"></i>
+                    <span>Reportes/Denuncias</span>
+                </a>
+                </li>
+                <li>
+                <a href="Mapa_Incidencias_Admin.html">
+                    <i class="fa-solid fa-map-location-dot"></i>
+                    <span>Mapa en vivo</span>
+                </a>
+                </li>
+                <li>
+                <a href="reporte_etadistico.html" class="active">
+                    <i class="fa-solid fa-chart-column"></i>
+                    <span>Reporte estadístico</span>
+                </a>
+                </li>
+                <li>
+                <a href="gestion_usuarios.html">
+                    <i class="fa-solid fa-users-gear"></i>
+                    <span>Gestión de usuarios</span>
+                </a>
+                </li>
+                
+            </ul>
+
+            <button class="logout-btn" id="logoutBtn">
+                <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+            </button>
+        </aside>
+
+        <main class="main-content">
+            <header class="report-header">
+                <div>
+                    <h1>Análisis Estadístico de Gestión</h1>
+                    <p>Resumen de actividad y rendimiento del sistema Cusco Reporta.</p>
+                </div>
+                <button class="download-btn" id="downloadPdf">
+                    <i class="fa-solid fa-file-export"></i> Exportar Reporte
+                </button>
+            </header>
+            
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon icon-blue"><i class="fa-solid fa-clipboard-list"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-value">1,284</span>
+                        <span class="kpi-label">Total Reportes</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon icon-green"><i class="fa-solid fa-check-double"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-value">85%</span>
+                        <span class="kpi-label">Tasa de Solución</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon icon-red"><i class="fa-solid fa-clock"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-value">4.2h</span>
+                        <span class="kpi-label">Tiempo de Respuesta</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon icon-yellow"><i class="fa-solid fa-users"></i></div>
+                    <div class="kpi-data">
+                        <span class="kpi-value">458</span>
+                        <span class="kpi-label">Usuarios Activos</span>
+                    </div>
+                </div>
+            </section>
+            
+            <div class="charts-grid">
+                <div class="chart-card large">
+                    <div class="chart-header">
+                        <h3><i class="fa-solid fa-chart-line"></i> Tendencia de Reportes (2024)</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="mainChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Tipos de Incidencias</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="doughnutChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3><i class="fa-solid fa-map-pin"></i> Reportes por Zona</h3>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="barChartDistrict"></canvas>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/reporte_etadistico.js"></script>
+</body>
+</html>

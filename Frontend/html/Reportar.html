@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reportar Incidencia - Cusco Reporta</title>
+  
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="../css/Reporte.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <div class="navbar__left">
+      <img src="../assents/images/CuscoReporta.png" alt="Logo Cusco Reporta" class="navbar__logo">
+    </div>
+    <nav class="navbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="registrar_tu_denuncia.html">Registra tu denuncia</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="iniciar-sesion.html">Iniciar Sesión</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <main class="main-reporte">
+    <div class="content-wrapper">
+      
+      <div class="header-text">
+        <h1><i class="fa-solid fa-user-secret"></i> Reporte Anónimo</h1>
+        <p>Tu reporte es 100% anónimo. Proporciona los detalles de la incidencia vial.</p>
+      </div>
+
+      <div class="denuncia-form">
+        <h2 class="form-titulo">Detalles de la Incidencia</h2>
+
+        <div class="formulario">
+
+          <div class="fila">
+            <div class="campo">
+              <label>Tipo de Incidencia <span style="color:red">*</span></label>
+              <select id="tipoIncidencia">
+                <option value="">Seleccione el tipo...</option>
+                <option value="Choque|10">Choque / Accidente (10 pts)</option>
+                <option value="Conducción peligrosa|6">Conducción peligrosa (6 pts)</option>
+                <option value="Mal estacionamiento|5">Mal estacionamiento (5 pts)</option>
+                <option value="Obstáculo en la vía|3">Obstáculo en la vía (3 pts)</option>
+              </select>
+            </div>
+            <div class="campo">
+              <label>Placa del Vehículo (Opcional)</label>
+              <input id="placa" type="text" placeholder="Ej: ABC-123" style="text-transform: uppercase;">
+            </div>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label>Fecha del Suceso <span style="color:red">*</span></label>
+              <input id="fechaSuceso" type="date">
+            </div>
+            <div class="campo">
+              <label>Hora Aproximada <span style="color:red">*</span></label>
+              <input id="horaSuceso" type="time">
+            </div>
+          </div>
+
+          <div class="campo" style="margin-bottom: 25px;">
+            <label>Ubicación en el Mapa (Haz clic para marcar) <span style="color:red">*</span></label>
+            <div id="map" style="height: 300px; border-radius: 15px; border: 2px solid #edf2f7; z-index: 1;"></div>
+            <input type="hidden" id="coords">
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label>Referencia de Ubicación</label>
+              <div class="input-group">
+                <input id="direccion" type="text" placeholder="Coordenadas o dirección..." readonly>
+                <button id="btnGps" class="btn-gps" type="button">
+                  <i class="fa-solid fa-crosshairs"></i> GPS
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="fila">
+            <div class="campo">
+              <label>Descripción detallada <span style="color:red">*</span></label>
+              <textarea id="descripcion" rows="3" placeholder="Ej: Vehículo obstruyendo rampa de discapacitados..."></textarea>
+            </div>
+          </div>
+
+          <label style="font-weight:700; color:#555; margin-bottom:10px; display:block;">Evidencia Fotográfica</label>
+          <input id="evidencia" type="file" accept="image/*">
+
+          <button id="btnEnviar" class="btn-principal">ENVIAR REPORTE ANÓNIMO</button>
+
+        </div>
+      </div>
+
+      <section id="detalle" style="display:none; margin-top:40px;">
+        <div class="detalle-card">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <h2 id="d-id" style="color:#8b1a1a; margin:0;"></h2>
+            <span class="badge-estado">RECIBIDO</span>
+          </div>
+          <hr style="margin:20px 0; border:0; border-top:1px solid #eee;">
+          
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+            <p><strong>Prioridad:</strong> <span id="d-prioridad"></span></p>
+            <p><strong>Vehículo:</strong> <span id="d-placa"></span></p>
+            <p><strong>Fecha/Hora:</strong> <span id="d-fecha-resumen"></span></p>
+            <p><strong>Coordenadas:</strong> <span id="d-coords"></span></p>
+          </div>
+          
+          <div style="margin-top:20px; padding:15px; background:#f9f9f9; border-radius:10px;">
+            <strong>Descripción:</strong>
+            <p id="d-descripcion" style="margin-top:5px; color:#555;"></p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/reporte.js"></script>
+</body>
+</html>

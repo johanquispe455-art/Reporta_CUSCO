@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Registrar Denuncia - Cusco Reporta</title>
+  <link rel="stylesheet" href="../css/registrar_Denuncia.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar"><i class="fa-solid fa-user"></i></div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu">
+        <li><a href="panel.html"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a></li>
+        <li><a href="perfil_usuario.html"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a></li>
+        <li><a href="registrar_Denuncia.html" class="active"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a></li>
+        <li><a href="lista_incidencias.html"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a></li>
+        <li><a href="MapaIncidiencias(Ciudadano).html"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a></li>
+        <li><a href="notificaciones.html"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a></li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="form-container">
+        <div class="form-header-main">
+          <div>
+            <h1>Registrar Denuncia Formal</h1>
+            <p>Complete los datos para generar un nuevo expediente administrativo.</p>
+          </div>
+          <div class="user-badge-mini">
+            <i class="fa-solid fa-shield-halved"></i> Denunciante Verificado
+          </div>
+        </div>
+
+        <form id="formDenuncia" class="denuncia-grid">
+          <div class="form-section">
+            <h2 class="section-subtitle"><i class="fa-solid fa-circle-info"></i> Información del Suceso</h2>
+            
+            <div class="input-row">
+              <div class="input-group">
+                <label>Fecha y Hora</label>
+                <input type="datetime-local" id="fecha_hora" required>
+              </div>
+              <div class="input-group">
+                <label>Prioridad Inicial</label>
+                <select id="prioridad">
+                  <option value="baja">Baja (+2 pts)</option>
+                  <option value="media" selected>Media (+5 pts)</option>
+                  <option value="alta">Alta (+10 pts)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="input-group">
+              <label>Tipo de Incidente</label>
+              <select id="tipo_incidente" onchange="checkOtro(this)">
+                <option value="choque">Accidente / Choque</option>
+                <option value="estacionamiento">Obstrucción de vía</option>
+                <option value="semaforo">Infracción de Tránsito</option>
+                <option value="otro">Otro (Especificar)</option>
+              </select>
+              <input type="text" id="otro_incidente" class="input-extra" placeholder="Especifique el tipo..." style="display:none;">
+            </div>
+
+            <div class="input-group">
+              <label>Descripción detallada</label>
+              <textarea id="hechos" rows="4" placeholder="Describa lo ocurrido con claridad..." required></textarea>
+            </div>
+
+            <div class="input-group">
+              <label>Evidencia Visual</label>
+              <div class="file-upload">
+                <input type="file" id="evidencia" accept="image/*,video/*">
+                <div class="upload-design">
+                  <i class="fa-solid fa-cloud-arrow-up"></i>
+                  <p>Subir fotos o videos</p>
+                  <span>Formatos permitidos: JPG, PNG, MP4</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="section-subtitle"><i class="fa-solid fa-location-dot"></i> Localización</h2>
+            <div id="mapContainer"></div>
+            <p class="map-hint">Seleccione en el mapa el punto exacto de la incidencia.</p>
+
+            <div class="input-row" style="margin-top: 20px;">
+              <div class="input-group">
+                <label>Placa del Vehículo (Opcional)</label>
+                <input type="text" id="placa" class="placa-input" placeholder="ABC-123">
+              </div>
+              <div class="input-group">
+                <label>Datos Adicionales</label>
+                <button type="button" class="btn-modal" id="btnDenunciado">
+                  <i class="fa-solid fa-user-ninja"></i> Datos del Infractor
+                </button>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-enviar">
+              <span>ENVIAR REPORTE OFICIAL</span>
+              <i class="fa-solid fa-paper-plane"></i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-exito" id="modalExito">
+    <div class="modal-exito-content">
+      <div class="success-icon"><i class="fa-solid fa-circle-check"></i></div>
+      <h2>¡Denuncia Registrada!</h2>
+      <p>Se ha generado el expediente exitosamente:</p>
+      <div class="id-final" id="idGenerado">CR-XXXX-XXXX</div>
+      <p class="nota">Guarde este código para realizar el seguimiento de su caso.</p>
+      <button class="btn-aceptar" onclick="cerrarExito()">Aceptar</button>
+    </div>
+  </div>
+
+  <div class="modal" id="modalDenunciado">
+    <div class="modal-content">
+      <span class="close-modal" id="closeDenunciado">&times;</span>
+      <h3><i class="fa-solid fa-user-minus"></i> Datos del Denunciado</h3>
+      <p style="font-size: 0.8rem; color: #777; margin-bottom: 15px;">Complete si posee información del responsable.</p>
+      
+      <div class="input-group">
+        <label>Nombre / Apodo</label>
+        <input type="text" id="nombre_denunciado" placeholder="Si se conoce">
+      </div>
+      <div class="input-group">
+        <label>Características Físicas</label>
+        <textarea id="desc_denunciado" placeholder="Vestimenta, señas, tatuajes..."></textarea>
+      </div>
+      
+      <button type="button" class="btn-guardar-modal" id="saveDenunciado">Aceptar y Cerrar</button>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/registrar_Denuncia.js"></script>
+</body>
+</html>

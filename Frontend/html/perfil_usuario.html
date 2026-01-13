@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Usuario - Cusco Reporta</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/perfil_usuario.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Jose Pérez</h3>
+          <p>Ciudadano</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu" style="list-style: none;">
+        <li>
+          <a href="panel.html"><i class="fa-solid fa-chart-line"></i><span>Panel</span></a>
+        </li>
+        <li>
+          <a href="perfil_usuario.html" class="active"><i class="fa-solid fa-id-card"></i><span>Ver perfil</span></a>
+        </li>
+        <li>
+          <a href="registrar_Denuncia.html"><i class="fa-solid fa-triangle-exclamation"></i><span>Denunciar</span></a>
+        </li>
+        <li>
+          <a href="lista_incidencias.html"><i class="fa-solid fa-list-check"></i><span>Estado de denuncias</span></a>
+        </li>
+        <li>
+          <a href="MapaIncidiencias(Ciudadano).html"><i class="fa-solid fa-map-location-dot"></i><span>Mapa de incidencias</span></a>
+        </li>
+        <li>
+          <a href="notificaciones.html"><i class="fa-solid fa-bell"></i><span>Notificaciones</span></a>
+        </li>
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> Cerrar sesión
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <section class="perfil-container">
+        <div class="perfil-header">
+            <h1>Mi Cuenta</h1>
+            <p>Gestiona tu información personal y de contacto</p>
+        </div>
+
+        <form id="formPerfil" class="perfil-form">
+          <div class="perfil-avatar-wrapper">
+            <div class="perfil-avatar">
+                <i class="fa-solid fa-user"></i>
+                <div class="btn-change-avatar"><i class="fa-solid fa-camera"></i></div>
+            </div>
+          </div>
+
+          <div class="perfil-campos">
+            <div class="campo-grupo">
+                <label>Nombre completo</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-user-tag"></i>
+                    <input type="text" class="campo-perfil" value="Jose Pérez" disabled>
+                </div>
+            </div>
+
+            <div class="campo-grupo">
+                <label>Correo electrónico</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" class="campo-perfil" value="joseperez@gmail.com" disabled>
+                </div>
+            </div>
+
+            <div class="fila-campos">
+                <div class="campo-grupo">
+                    <label>DNI / Documento</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-id-card"></i>
+                        <input type="text" class="campo-perfil" value="74851236" disabled>
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <label>Teléfono</label>
+                    <div class="input-with-icon">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="text" class="campo-perfil" value="987654321" disabled>
+                    </div>
+                </div>
+            </div>
+
+            <div class="campo-grupo">
+                <label>Dirección</label>
+                <div class="input-with-icon">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <input type="text" class="campo-perfil" value="Av. El Sol 123 - Cusco" disabled>
+                </div>
+            </div>
+          </div>
+
+          <div class="perfil-actions">
+            <button type="button" id="btnEditarPerfil" class="btn btn-edit">
+                <i class="fa-solid fa-pen-to-square"></i> Editar Datos
+            </button>
+            <button type="submit" id="btnGuardar" class="btn btn-save" style="display: none;">
+                <i class="fa-solid fa-floppy-disk"></i> Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="../js/perfil_usuario.js"></script>
+</body>
+</html>

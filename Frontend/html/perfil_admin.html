@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perfil Administrador - Cusco Reporta</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/perfil_admin.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__logo">
+      <img src="../assents/images/CuscoReporta.png" alt="Cusco Reporta Logo">
+    </div>
+    <nav class="topbar__menu">
+      <a href="index.html">Inicio</a>
+      <a href="sobre_nosotros.html">Sobre nosotros</a>
+      <a href="ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar__user">
+        <div class="sidebar__avatar">
+          <i class="fa-solid fa-user-shield"></i>
+        </div>
+        <div class="sidebar__info">
+          <h3>Nombre</h3>
+          <p>Administrador</p>
+        </div>
+      </div>
+
+      <ul class="sidebar__menu">
+        <li>
+          <a href="panel_admin.html">
+            <i class="fa-solid fa-house-chimney"></i>
+            <span>Panel</span>
+          </a>
+        </li>
+        <li>
+          <a href="perfil_admin.html" class="active">
+            <i class="fa-solid fa-id-card"></i>
+            <span>Ver perfil</span>
+          </a>
+        </li>
+        <li>
+          <a href="Estado_Reporte.html">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Reportes/Denuncias</span>
+          </a>
+        </li>
+        <li>
+          <a href="Mapa_Incidencias_Admin.html">
+            <i class="fa-solid fa-map-location-dot"></i>
+            <span>Mapa en vivo</span>
+          </a>
+        </li>
+        <li>
+          <a href="reporte_etadistico.html">
+            <i class="fa-solid fa-chart-column"></i>
+            <span>Reporte estadístico</span>
+          </a>
+        </li>
+        <li>
+          <a href="gestion_usuarios.html">
+            <i class="fa-solid fa-users-gear"></i>
+            <span>Gestión de usuarios</span>
+          </a>
+        </li>
+        
+      </ul>
+
+      <button class="logout-btn" id="logoutBtn">
+        <i class="fa-solid fa-right-from-bracket"></i> <span>Cerrar sesión</span>
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="welcome-section">
+        <h1>Perfil de Administrador</h1>
+        <p class="welcome-msg">Consulta y actualiza tus credenciales de administrador del sistema.</p>
+      </div>
+
+      <section class="profile-card">
+        <div class="profile-card__header">
+            <div class="profile-avatar-l">
+                <i class="fa-solid fa-user-gear"></i>
+            </div>
+            <div class="profile-header-info">
+                <h2 id="displayNombre">Administrador General</h2>
+                <span>ID: 70654321-ADM</span>
+            </div>
+        </div>
+
+        <div class="profile-card__body">
+          <form id="formPerfil">
+            <div class="form-grid">
+              <div class="input-box">
+                <label>ID de Administrador</label>
+                <input type="text" id="adminId" value="70654321-ADM" disabled>
+              </div>
+              <div class="input-box">
+                <label>DNI</label>
+                <input type="text" id="dni" value="70654321" disabled>
+              </div>
+
+              <div class="input-box full">
+                <label>Nombre Completo</label>
+                <input type="text" id="nombre" value="Juan Pérez Cusco" disabled>
+              </div>
+              
+              <div class="input-box">
+                <label>Teléfono</label>
+                <input type="text" id="telefono" value="987654321" disabled>
+              </div>
+              
+              <div class="input-box">
+                <label>Correo Electrónico</label>
+                <input type="email" id="correo" value="admin@cuscoreporta.com" disabled>
+              </div>
+
+              <div class="input-box full">
+                <label>Rol</label>
+                <input type="text" id="cargo" value="Administrador" disabled>
+              </div>
+            </div>
+
+            <div class="profile-actions">
+              <button type="button" id="btnEditar" class="btn-main btn-edit">
+                <i class="fa-solid fa-user-pen"></i> Editar Mis Datos
+              </button>
+              
+              <button type="button" id="btnCancelar" class="btn-main btn-cancel">Cancelar</button>
+              
+              <button type="submit" id="btnGuardar" class="btn-main btn-save">
+                <i class="fa-solid fa-check"></i> Guardar Cambios
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="../js/perfil_admin.js"></script>
+</body>
+</html>

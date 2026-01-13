@@ -1,0 +1,186 @@
+/* ============================================= */
+/* ESTILOS PARA LA PÁGINA "SOBRE NOSOTROS"      */
+/* ============================================= */
+
+/* ====== RESET GENERAL ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; /* Unificado con index y denuncias */
+}
+
+body {
+  background: #f7f7f7;
+  color: #333;
+}
+
+/* ======= NAVBAR (IDÉNTICA A INDEX.CSS) ======= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%;
+  background-color: #e0e0e0; /* El gris de tu index */
+  border-bottom: 1px solid #ccc;
+}
+
+.navbar__left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar__logo {
+  height: 45px;
+  object-fit: contain;
+}
+
+.navbar__menu {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar__menu a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.navbar__menu a:hover {
+  color: #8b1a1a;
+}
+
+/* ===== HERO (Centrado) ===== */
+.hero--red {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(135deg, #7b1616, #b71b1b);
+  color: white;
+  border-radius: 14px;
+  margin: 40px auto;
+  width: 90%;
+  max-width: 1100px;
+}
+
+.hero--red h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero--red p {
+  max-width: 800px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+/* ===== SECCIONES (Quiénes somos / Misión / Visión) ===== */
+.main section {
+  width: 90%;
+  max-width: 1100px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  gap: 40px;
+  background: #ffffff;
+  padding: 35px 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.main section:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.main section h2 {
+  color: #8B1E1E;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.main section p {
+  max-width: 500px;
+  color: #333;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+/* ===== FEATURES ===== */
+.features {
+  width: 90%;
+  max-width: 1100px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #7a1a1a;
+  margin-bottom: 35px;
+}
+
+.features-column {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+.feature, .feature--red {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1 1 30%;
+  min-width: 250px;
+  background: #fff;
+  border-left: 6px solid #8B1E1E;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: .2s;
+}
+
+.feature--red img {
+  width: 65px;
+  margin-bottom: 12px;
+}
+
+.feature--red h3 {
+  font-size: 1.4rem;
+  color: #8B1E1E;
+  margin-bottom: 10px;
+}
+
+/* ===== REGLAS DE INFO INFERIOR (Restauradas) ===== */
+.section-vertical, .features-column, .feature {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  text-align: left !important;
+  margin-bottom: 20px;
+  float: none !important;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+  .main section {
+    flex-direction: column !important;
+    text-align: center;
+  }
+  
+  .main section p {
+    max-width: 100%;
+  }
+}
