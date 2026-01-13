@@ -1,19 +1,25 @@
 import pkg from "pg";
 const { Pool } = pkg;
 
-// Render usa una "connectionString" (un solo texto con todo)
-// Si no existe, usa tus datos de Supabase que ya tienes
 export const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || "postgresql://postgres:kiri74493570to@db.wrvcqmyyjzemgagalzub.supabase.co:5432/postgres",
-  ssl: { 
-    rejectUnauthorized: false 
-  }
+  connectionString:
+    process.env.DATABASE_URL ||
+    "postgresql://postgres:kiri74493570to@db.wrvcqmyyjzemgagalzub.supabase.co:5432/postgres",
+
+  ssl: {
+    rejectUnauthorized: false,
+  },
+
+  family: 4, // 🔥 FORZAR IPv4 (CLAVE PARA RENDER)
 });
-// Añade esto al final de tu archivo conexionBD.js
+
+// Test de conexión
 pool.connect((err, client, release) => {
   if (err) {
-    return console.error('❌ Error de conexión a Supabase:', err.message);
+    console.error("❌ Error de conexión a Supabase:", err);
+    return;
   }
-  console.log('✅ Conexión exitosa a la base de datos en la nube');
+
+  console.log("✅ Conexión exitosa a la base de datos en la nube");
   release();
 });
