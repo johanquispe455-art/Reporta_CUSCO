@@ -2,10 +2,11 @@ import express from "express";
 import cors from "cors";
 import path from "path"; // Importante para las rutas de archivos
 
+// Cambia estas líneas exactamente así (asegurándote de que coincidan con tu imagen)
 import authRoutes from "./Rutas/auth.routes.js";
-import dniRoutes from "./Rutas/dni.route.js"; 
+import dniRoutes from "./Rutas/dni.route.js";  // <--- Confirmado: en tu imagen NO tiene 's'
 import denunciaRoutes from "./Rutas/denuncia.routes.js";
-import incidenciaRoutes from "./Rutas/incidencias.routes.js"; // 1. IMPORTAR RUTAS DE INCIDENCIAS (EL MAPA)
+import incidenciaRoutes from "./Rutas/incidencias.routes.js";
 import adminUsuarioRoutes from "./Rutas/adminusuario.routes.js";
 import adminIncidenciasRoutes from "./Rutas/denuncia_admin.routes.js";
 import reporteRoutes from "./Rutas/reporteRoutes.js";
@@ -48,5 +49,6 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 app.use("/api/admin-incidencias", adminIncidenciasRoutes);
+
 
 
