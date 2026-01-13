@@ -1,3 +1,5 @@
+console.log("🟡 EJECUTANDO conexionBD.js");
+
 import pkg from "pg";
 const { Pool } = pkg;
 
@@ -23,3 +25,4 @@ pool.connect((err, client, release) => {
   console.log("✅ Conexión exitosa a la base de datos en la nube");
   release();
 });
+
