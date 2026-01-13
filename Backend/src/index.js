@@ -3,7 +3,7 @@ import cors from "cors";
 import path from "path"; // Importante para las rutas de archivos
 
 import authRoutes from "./Rutas/auth.routes.js";
-import dniRoutes from "./Rutas/dni.route.js"; 
+import dniRoutes from "./Servicios/dni.route.js"; 
 import denunciaRoutes from "./Rutas/denuncia.routes.js";
 import incidenciaRoutes from "./Rutas/incidencias.routes.js"; // 1. IMPORTAR RUTAS DE INCIDENCIAS (EL MAPA)
 import adminUsuarioRoutes from "./Rutas/adminusuario.routes.js";
@@ -48,3 +48,4 @@ app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
 app.use("/api/admin-incidencias", adminIncidenciasRoutes);
+
